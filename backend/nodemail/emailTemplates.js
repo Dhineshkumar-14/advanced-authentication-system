@@ -93,3 +93,98 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
 </body>
 </html>
 `;
+
+export const WELCOME_EMAIL = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Email</title>
+
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #3b3f44;
+    }
+    img {
+      border: none;
+      display: block;
+      width: 100%;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .header-text {
+      font-size: 18px;
+      text-align: center;
+      padding-top: 15px;
+    }
+    .content-section {
+      background-color: #eff2f7;
+      padding: 20px 15px;
+      text-align: center;
+    }
+    .footer-text {
+      font-size: 14px;
+      color: #3b3f44;
+      padding: 10px 0;
+    }
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>
+        <!-- Main Container -->
+        <table class="container" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="padding: 20px 0;">
+
+              <!-- Header Text -->
+              <p class="header-text">Welcome To the Authentication System</p>
+
+              <!-- Banner Image -->
+              <img src="https://img.mailinblue.com/10267854/images/content_library/original/69289131459503aa7561b5a6.png" alt="Banner">
+
+              <!-- Content Section -->
+              <div class="content-section">
+                <p style="font-size: 18px;"><strong>Demo</strong></p>
+
+                <p class="footer-text">No.P81, Mahalakshmi street, Lakshmi Nagar, 600048, Mudichur</p>
+
+                <p class="footer-text">This email was sent to {{ contact.EMAIL }}</p>
+
+                <p class="footer-text">You received this email because you subscribed to our newsletter.</p>
+
+                <!-- Brevo Logo -->
+                <a href="https://www.brevo.com">
+                  <img src="https://creative-assets.mailinblue.com/rnb-assets/en.png" alt="Sent by Brevo" width="129" style="margin: 15px auto;">
+                </a>
+              </div>
+
+            </td>
+          </tr>
+        </table>
+        <!-- End Main Container -->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`;
