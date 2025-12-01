@@ -1,13 +1,13 @@
-import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import crypto from "crypto";
-import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
+import { User } from "../models/user.model.js";
 import {
-  sendVerificationEmail,
-  sendWelcomeEmail,
   sendPasswordResetEmail,
   sendResetSuccessEmail,
+  sendVerificationEmail,
+  sendWelcomeEmail,
 } from "../nodemail/emails.js";
+import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
 export const signup = async (req, res) => {
   const { email, password, name } = req.body;
@@ -159,12 +159,10 @@ export const forgotPassword = async (req, res) => {
       `${process.env.CLIENT_URL}/reset-password/${resetToken}`
     );
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Password reset link sent to your email",
-      });
+    res.status(200).json({
+      success: true,
+      message: "Password reset link sent to your email",
+    });
   } catch (error) {
     console.log("Error in forgotPassword ", error);
     res.status(400).json({ success: false, message: error.message });
@@ -221,6 +219,3 @@ export const checkAuth = async (req, res) => {
     res.status(400).json({ success: false, message: error.message });
   }
 };
-
-
-
