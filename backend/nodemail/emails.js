@@ -7,21 +7,37 @@ import {
 import transporter from "./nodemailer.config.js";
 
 export const sendVerificationEmail = async (email, verificationToken) => {
+  const axios = require("axios");
+
+const token = "YOUR_TOKEN"; 
+const phoneNumberId = "YOUR_PHONE_NUMBER_ID";
+
+async function sendWhatsApp() {
   try {
-    const response = await transporter.sendMail({
-      from: '"Dhineshkumar" <dhineshkumar.velayudham@gmail.com>',
-      to: email,
-      subject: "Verify your email",
-      html: VERIFICATION_EMAIL_TEMPLATE.replace(
-        "{verificationCode}",
-        verificationToken
-      ),
-    });
-    console.log("Email sent successfully", response);
+    const response = await axios.post(
+      `https://graph.facebook.com/v18.0/${phoneNumberId}/messages`,
+      {
+        messaging_product: "whatsapp",
+        to: "91XXXXXXXXXX",
+        type: "text",
+        text: { body: "Hello! This is a WhatsApp message from Node.js 🚀" }
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log("Message sent:", response.data);
   } catch (error) {
-    console.error(`Error sending verification`, error);
-    throw new Error(`Error sending verification email: ${error}`);
+    console.error("Error:", error.response?.data || error.message);
   }
+}
+
+sendWhatsApp();
+
 };
 
 export const sendWelcomeEmail = async (email) => {
